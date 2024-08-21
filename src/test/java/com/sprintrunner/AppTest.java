@@ -23,6 +23,7 @@ class AppTest {
     void greetWithName() {
         Greet greet = new Greet();
         assertEquals("Hello Balaji", greet.sayHello("Balaji"));
+        assertEquals("Hello World!", greet.sayHello(""));
     }
 }
 
