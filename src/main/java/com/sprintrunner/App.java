@@ -13,7 +13,8 @@ public final class App {
      */
     public static void main(String[] args) {
         Greet greet = new Greet();
-        greet.sayHello();
+        greet.sayHello("");
+        greet.sayHello("Balaji");
     }
 }
 

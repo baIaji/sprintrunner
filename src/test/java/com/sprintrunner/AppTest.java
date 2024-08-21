@@ -18,5 +18,11 @@ class AppTest {
         assertEquals(true, true);
         assertTrue(true);
     }
+
+    @Test
+    void greetWithName() {
+        Greet greet = new Greet();
+        assertEquals("Hello Balaji", greet.sayHello("Balaji"));
+    }
 }
 

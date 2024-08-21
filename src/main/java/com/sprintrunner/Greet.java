@@ -5,8 +5,12 @@ public class Greet {
      * Says hello to the world.
      * @param args The arguments of the program.
      */
-    public String sayHello() {
-        return "Hello World!";
+    public String sayHello(String name) {
+            if (name != null && !name.trim().isEmpty()) {
+            return "Hello " + name;
+        } else {
+            return "Hello World!";
+        }
     }
 }
 
