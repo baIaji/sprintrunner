@@ -1,5 +1,5 @@
 package com.sprintrunner;
-
+import com.sprintrunner.Greet;
 /**
  * Hello world!
  */
@@ -12,11 +12,8 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        this.greet();
-    }
-
-    public String greet() {
-        System.out.println("Hello World!");
+        Greet greet = new Greet();
+        greet.sayHello();
     }
 }
 

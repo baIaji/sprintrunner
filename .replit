@@ -1,0 +1,8 @@
+modules = ["java-graalvm22.3"]
+run = "mvn -B package --file pom.xml"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "start"]
