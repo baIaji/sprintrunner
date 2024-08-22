@@ -45,7 +45,7 @@ jobs:
         timeout: '3600'
         interval: '100'
         # The customized inputs to create change with the requested details.
-        change-request: '{"setCloseCode": "true","autoCloseChange": true,"attributes": {"chg_model":{"name":"DevOps"},"short_description": "GitHub - (load-testing)","description": "GitHub Automated Software Deployment.","assignment_group": "a715cd759f2002002920bde8132e7018","assigned_to" :{"name": "Abraham Lincoln"},"work_notes": "Check out this awesome CR","implementation_plan": "Software update is tested and results can befound in Test Summaries Tab","backout_plan": "When software fails in production, the previous software release will be re-deployed.","test_plan": "Testing if the software was successfully deployed"}}'
+        change-request: '{"setCloseCode": "true","autoCloseChange": true,"attributes": {"chg_model":{"name":"DevOps"},"short_description": "Sprint Runner Change created from pipeline","description": "GitHub Automated Software Deployment.","assignment_group": "a715cd759f2002002920bde8132e7018","assigned_to" :{"name": "Abraham Lincoln"},"work_notes": "Check out this awesome CR","implementation_plan": "Software update is tested and results can befound in Test Summaries Tab","backout_plan": "When software fails in production, the previous software release will be re-deployed.", "software_model": "273e27a783cc5a10b5f681b8beaad3d7", "test_plan": "Testing if the software was successfully deployed"}}'
         # The max. time in seconds to wait until change created.
         changeCreationTimeOut: '3600'
 
