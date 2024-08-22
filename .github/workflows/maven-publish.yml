@@ -30,7 +30,7 @@ jobs:
 
   create-change:
     runs-on: ubuntu-latest
-    depends: build
+    needs: build
 
     steps:
     - name: ServiceNow DevOps Change Automation
@@ -53,7 +53,7 @@ jobs:
 
   publish-package:
     runs-on: ubuntu-latest
-    depends: create-change
+    needs: create-change
 
     steps:
       - name: Publish to GitHub Packages Apache Maven
