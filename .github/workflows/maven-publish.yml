@@ -37,9 +37,7 @@ jobs:
       uses: ServiceNow/servicenow-devops-change@v4.0.0
       with:
         instance-url: https://dprtesting.service-now.com
-        devops-integration-user-name: ${{ secrets.DEVOPS_INTEGRATION_USER_NAME }}
-        devops-integration-user-password: ${{ secrets.DEVOPS_INTEGRATION_PASSWORD }} }}
-        devops-integration-token: ${{ secrets.DEVOPS_INTEGRATION_TOKEN }} }}
+        devops-integration-token: ${{ secrets.DEVOPS_INTEGRATION_TOKEN }}
         tool-id: ${{ secrets.TOOL_ID }}
         job-name: 'ServiceNow DevOps Change Automation'
         context-github: ${{ toJSON(github) }}
