@@ -8,8 +8,8 @@ on:
     types: [created]
 
 jobs:
-  build:
 
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -28,7 +28,35 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  create-change:
+    runs-on: ubuntu-latest
+    depends: build
+
+    steps:
+    - name: ServiceNow DevOps Change Automation
+      uses: ServiceNow/servicenow-devops-change@v4.0.0
+      with:
+        instance-url: https://dprtesting.service-now.com
+        devops-integration-user-name: ${{ secrets.DEVOPS_INTEGRATION_USER_NAME }}
+        devops-integration-user-password: ${{ secrets.DEVOPS_INTEGRATION_PASSWORD }} }}
+        devops-integration-token: ${{ secrets.DEVOPS_INTEGRATION_TOKEN }} }}
+        tool-id: ${{ secrets.TOOL_ID }}
+        job-name: 'ServiceNow DevOps Change Automation'
+        context-github: ${{ toJSON(github) }}
+        timeout: '3600'
+        interval: '100'
+        # The customized inputs to create change with the requested details.
+        change-request: '{"setCloseCode": "true","autoCloseChange": true,"attributes": {"chg_model":{"name":"DevOps"},"short_description": "GitHub - (load-testing)","description": "GitHub Automated Software Deployment.","assignment_group": "1b0a5c60ff8c9610c648fe258c4fd956","assigned_to" :{"name": "Abraham Lincoln"},"work_notes": "Check out this awesome CR","implementation_plan": "Software update is tested and results can befound in Test Summaries Tab","backout_plan": "When software fails in production, the previous software release will be re-deployed.","test_plan": "Testing if the software was successfully deployed"}}'
+        # The max. time in seconds to wait until change created.
+        changeCreationTimeOut: '3600'
+
+
+  publish-package:
+    runs-on: ubuntu-latest
+    depends: create-change
+
+    steps:
+      - name: Publish to GitHub Packages Apache Maven
+        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
