@@ -16,6 +16,7 @@ class AppTest {
     void testApp() {
         assertEquals(1, 1);
         assertEquals(true, true);
+        assertEquals(true, true);
         assertTrue(true);
     }
 
